@@ -1,0 +1,23 @@
+{
+  "name": "LogicaDesk",
+  "short_name": "LogicaDesk",
+  "description": "Appunti e tavole di verità per la logica",
+  "lang": "it",
+  "start_url": "./app.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf1fb",
+  "theme_color": "#cfe3ff",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
