@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LogicaDesk – appunti e tavole di verità per la logica</title>
-<meta name="description" content="LogicaDesk è un editor per Windows per appunti di logica: simboli, lettere greche, formulario di equivalenze, tavole di verità ed esportazione in PDF e Word.">
+<meta name="description" content="LogicaDesk è un editor per Windows per appunti di logica: simboli, lettere greche, formulario, tavole di verità. Con LogicaDesk Pro le tavole si calcolano da sole, con equivalenze, conseguenza logica ed esercizi corretti.">
 <!-- GOOGLE-VERIFICA: incolla qui sotto la riga <meta name="google-site-verification" ...> -->
 <link rel="canonical" href="https://basilegiovanni007-pixel.github.io/LogicaDesk/">
 <meta property="og:type" content="website">
@@ -18,6 +18,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/","downloadUrl":"https://github.com/basilegiovanni007-pixel/LogicaDesk/releases/latest/download/LogicaDeskSetup.exe","description":"Editor per appunti di logica con simboli, lettere greche, formulario di equivalenze e tavole di verità."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk Pro","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/#pro","description":"Tavole di verità calcolate automaticamente, equivalenza tra formule, conseguenza logica e modalità esercizio con correzione.","offers":{"@type":"Offer","price":"4.90","priceCurrency":"EUR"}}
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231b7dff'/%3E%3Cpath d='M32 16 18 44h28z' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
@@ -119,7 +122,78 @@ kbd{font:600 .88em var(--ui);padding:.1rem .45rem;border-radius:7px;background:#
 .dl h2{margin-inline:auto}.dl .sub{margin-inline:auto}
 footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 
+
+/* ---------- LogicaDesk Pro ---------- */
+.pill{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.04em}
+.pill.pro{background:linear-gradient(180deg,#b39bff,#6d4df0);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.news{display:inline-flex;align-items:center;gap:.6rem;margin:0 0 1.2rem;padding:.35rem .9rem .35rem .4rem;border-radius:999px;
+  background:rgba(255,255,255,.7);border:1px solid rgba(120,110,230,.3);text-decoration:none;color:#3b34b0;font-size:.92rem;font-weight:600}
+.news:hover{background:#fff}
+.btn.pro{color:#fff;border-color:#4a2ed6;background:linear-gradient(180deg,#a594ff 0,#6d4df0 50%,#4a2ed6 100%);
+  text-shadow:0 1px 0 rgba(30,10,120,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 18px -8px rgba(74,46,214,.7)}
+.btn[aria-disabled="true"]{opacity:.65;pointer-events:none}
+.pro-band{position:relative;overflow:hidden;border-radius:30px;padding:2.6rem;color:#fff;
+  background:radial-gradient(40rem 22rem at 85% -10%,rgba(120,140,255,.55),transparent 60%),linear-gradient(110deg,#0c1240 0,#2a2580 55%,#4634b6 100%);
+  box-shadow:0 24px 60px -24px rgba(30,20,120,.6)}
+.pro-band h2{color:#fff;max-width:36rem}
+.pro-band .sub{color:#b9c3ff;max-width:40rem}
+.pro-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.pro-head svg{width:52px;height:52px;filter:drop-shadow(0 6px 10px rgba(0,0,40,.5))}
+.pro-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+.pro-feat article{padding:1.3rem;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.pro-feat h3{margin:0 0 .35rem;font-size:1.08rem;color:#fff}
+.pro-feat p{margin:0;color:#c8d0ff;font-size:.96rem}
+.pro-feat .sym{font:700 1.5rem var(--math);color:#9fb0ff;display:block;margin-bottom:.4rem}
+
+.demo{margin-top:2rem;padding:1.6rem;border-radius:24px;background:#fff;color:var(--ink)}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.tab{all:unset;cursor:pointer;padding:.5rem 1rem;border-radius:12px;font-weight:600;font-size:.95rem;color:#3b34b0;background:#eef0ff;border:1px solid #d9dcff}
+.tab[aria-selected="true"]{background:linear-gradient(180deg,#7b93ff,#3a4de8);color:#fff;border-color:#3a4de8}
+.tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.chooser{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem}
+.chooser button{all:unset;cursor:pointer;padding:.4rem .9rem;border-radius:999px;font:600 1rem var(--math);background:#f4f2ff;color:#3b34b0;border:1px solid #e0dafc}
+.chooser button[aria-pressed="true"]{background:#3b34b0;color:#fff;border-color:#3b34b0}
+.chooser button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.verdict{margin:.2rem 0 .8rem;font-weight:700;font-size:1.05rem}
+.verdict.ok{color:#2f4bd8}.verdict.no{color:#6a3fd0}.verdict.mid{color:var(--navy)}
+.verdict .f{font-family:var(--math)}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dt{border-collapse:collapse;font:1.02rem var(--math);text-align:center;min-width:100%}
+.dt th{background:#dde4ff;color:#1b2370;padding:.5rem .8rem;border:1px solid #c3caea;white-space:nowrap}
+.dt td{padding:.4rem .8rem;border:1px solid #dfe3f3;font-weight:600}
+.dt td.v{color:#2f4bd8}.dt td.f{color:#6a3fd0}
+.dt tr.diff td{background:#ece3ff}.dt tr.crit td{background:#e3eaff}.dt tr.bad td{background:#ece3ff}
+.dt td.mark{font-family:var(--ui);font-weight:800}
+.demo-note{color:var(--muted);font-size:.88rem;margin:.8rem 0 0}
+
+.cmp-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:1.1rem;align-items:start}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:.98rem}
+.cmp th,.cmp td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid rgba(160,175,225,.4)}
+.cmp th{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.cmp td:nth-child(2),.cmp td:nth-child(3),.cmp th:nth-child(2),.cmp th:nth-child(3){text-align:center;width:6.5rem}
+.cmp .yes{color:#2f4bd8;font-weight:800}.cmp .no{color:#a3abc8}
+.cmp tr:last-child td{border-bottom:0}
+.price{padding:2rem;text-align:center}
+.price .amount{font:800 3.2rem/1 var(--ui);letter-spacing:-.03em;margin:.6rem 0 .2rem;color:#2a2580}
+.price .once{color:var(--muted);margin:0 0 1.4rem}
+.price ul{list-style:none;padding:0;margin:0 0 1.6rem;text-align:left;display:grid;gap:.5rem}
+.price li{padding-left:1.6rem;position:relative;color:#3b4763}
+.price li::before{content:"✓";position:absolute;left:0;color:#4a2ed6;font-weight:800}
+.price .btn{width:100%;justify-content:center}
+
+.faq{display:grid;gap:.7rem;max-width:52rem}
+.faq details{padding:1.1rem 1.4rem}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:#4a2ed6;font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:.7rem 0 0;color:#3b4763}
+
 @media(max-width:900px){
+  .pro-feat{grid-template-columns:1fr}
+  .cmp-wrap{grid-template-columns:1fr}
+  .pro-band{padding:1.6rem}
+  .demo{padding:1.1rem}
   .hero{grid-template-columns:1fr;padding-top:2rem}
   .feat{grid-template-columns:1fr}.feat>*{grid-column:auto!important}
   .steps{grid-template-columns:1fr}
@@ -141,6 +215,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
     </a>
     <nav>
       <a href="#funzioni">Funzioni</a>
+      <a href="#pro">Versione Pro</a>
       <a href="#installazione">Installazione</a>
       <a class="btn primary" href="https://github.com/basilegiovanni007-pixel/LogicaDesk/releases/latest/download/LogicaDeskSetup.exe">Scarica</a>
     </nav>
@@ -150,6 +225,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 <main id="top">
   <div class="wrap hero">
     <div>
+      <a class="news" href="#pro"><span class="pill pro">PRO</span> Novità: tavole calcolate da sole, equivalenze, ⊨ ed esercizi corretti →</a>
       <h1>Scrivi la logica con i simboli giusti.</h1>
       <p class="lead">LogicaDesk è un editor per Windows per appunti ed esercitazioni di logica: simboli a un clic, tavole di verità vere e un formulario sempre a portata di mano. Tutto in italiano.</p>
       <div class="cta">
@@ -227,6 +303,81 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
     </div>
   </section>
 
+
+  <section id="pro">
+    <div class="wrap">
+      <div class="pro-band">
+        <div class="pro-head"><svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9db1ff"/><stop offset="1" stop-color="#4a2ed6"/></linearGradient></defs>
+            <rect x="2" y="2" width="48" height="48" rx="15" fill="url(#gp)" stroke="#fff" stroke-opacity=".35"/>
+            <rect x="5" y="4" width="42" height="18" rx="10" fill="#fff" opacity=".25"/>
+            <path d="M26 11 15 29h22z" fill="none" stroke="#ebf0ff" stroke-width="2.4" stroke-linejoin="round"/>
+            <circle cx="26" cy="11" r="4.2" fill="#fff"/><circle cx="15" cy="29" r="4.2" fill="#fff"/><circle cx="37" cy="29" r="4.2" fill="#67e8f9"/>
+            <rect x="13" y="36" width="26" height="9" rx="4.5" fill="#fff"/><text x="26" y="43" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7" font-weight="800" fill="#4a2ed6">PRO</text></svg><span class="pill pro">LOGICADESK PRO</span></div>
+        <h2>Dalla formula alla tavola di verità in un secondo.</h2>
+        <p class="sub">LogicaDesk Pro calcola le tavole al posto tuo, confronta formule, verifica le conseguenze logiche e corregge i tuoi esercizi. Funziona offline, in italiano, su Windows.</p>
+        <div class="pro-feat">
+          <article><span class="sym">p → q</span><h3>Tavole calcolate da sole</h3><p>Scrivi la formula, anche con <code>-&gt;</code>, <code>&amp;</code>, <code>|</code>: ottieni tutte le righe e le colonne intermedie, fino a 5 variabili.</p></article>
+          <article><span class="sym">✓ ✗</span><h3>Verdetto immediato</h3><p>Tautologia, contraddizione o contingente: lo vedi subito accanto alla tavola.</p></article>
+          <article><span class="sym">≡</span><h3>Equivalenza tra formule</h3><p>Confronta due formule su tutte le righe e scopri esattamente dove differiscono.</p></article>
+          <article><span class="sym">⊨</span><h3>Conseguenza logica</h3><p>Premesse e conclusione: modus ponens, sillogismi, e il controesempio quando il ragionamento è sbagliato.</p></article>
+          <article><span class="sym">✎</span><h3>Modalità esercizio</h3><p>Compili tu la tavola, l’app colora le celle sbagliate e ti dice quante ne mancano.</p></article>
+          <article><span class="sym">⇒ ↔</span><h3>Scrittura veloce</h3><p>Negli appunti <code>-&gt;</code> diventa →, <code>&lt;-&gt;</code> diventa ↔. Più la freccia doppia ⇒ e le scorciatoie da tastiera.</p></article>
+        </div>
+
+        <div class="demo" id="demo">
+          <div class="tabs" role="tablist" aria-label="Esempi di LogicaDesk Pro">
+            <button class="tab" role="tab" aria-selected="true" data-tab="tavole">Tavola automatica</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="equivalenze">Equivalenza ≡</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="conseguenze">Conseguenza ⊨</button>
+          </div>
+          <div class="chooser" id="demo-chooser"></div>
+          <p class="verdict" id="demo-verdict"></p>
+          <div class="scroll-x"><table class="dt" id="demo-table"></table></div>
+          <p class="demo-note" id="demo-note">Esempi calcolati con il motore di LogicaDesk Pro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prezzo">
+    <div class="wrap">
+      <h2>Gratis o Pro: scegli tu</h2>
+      <p class="sub">La versione gratuita resta gratuita. La Pro aggiunge gli strumenti che fanno i calcoli e correggono gli esercizi.</p>
+      <div class="cmp-wrap">
+        <div class="glass" style="padding:.6rem 1rem">
+          <table class="cmp">
+            <thead><tr><th>Funzione</th><th>Gratis</th><th>Pro</th></tr></thead>
+            <tbody>
+              <tr><td>Appunti con simboli logici e lettere greche</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Formulario di equivalenze</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Tavola di verità compilata a mano</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Esportazione in PDF e Word</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Tavole calcolate automaticamente</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Verdetto: tautologia, contraddizione, contingente</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Equivalenza tra formule (≡)</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Conseguenza logica (⊨) con controesempi</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Modalità esercizio con correzione</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Conversione automatica dei simboli</td><td class="no">—</td><td class="yes">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="glass price" id="acquista">
+          <span class="pill pro">PRO</span>
+          <p class="amount">4,90 €</p>
+          <p class="once">una volta sola · nessun abbonamento</p>
+          <ul>
+            <li>Tutte le funzioni Pro</li>
+            <li>Aggiornamenti della versione 2 inclusi</li>
+            <li>Funziona offline, i tuoi dati restano tuoi</li>
+            <li>Windows 10 e 11</li>
+          </ul>
+          <a class="btn pro" id="buy-button" href="#acquista">Acquista LogicaDesk Pro</a>
+          <p class="small" id="buy-note">Pagamento sicuro: dopo l’acquisto ricevi via email il link per scaricare l’installer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="installazione">
     <div class="wrap">
       <h2>Parti in tre passaggi</h2>
@@ -236,6 +387,21 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
         <li class="glass"><h3>Avvialo</h3><p>Doppio clic sul file. Se Windows mostra «Windows ha protetto il PC», scegli «Ulteriori informazioni» e poi «Esegui comunque».</p></li>
         <li class="glass"><h3>Segui l’installazione</h3><p>Premi «Avanti» fino alla fine: LogicaDesk compare sul desktop e nel menu Start.</p></li>
       </ol>
+    </div>
+  </section>
+
+
+  <section id="domande">
+    <div class="wrap">
+      <h2>Domande frequenti</h2>
+      <div class="faq">
+        <details class="glass"><summary>Come ricevo LogicaDesk Pro dopo l’acquisto?</summary><p>Ricevi subito un’email con il link per scaricare <strong>LogicaDeskProSetup.exe</strong>. Lo installi come la versione gratuita: si aggiunge accanto a quella, senza sostituirla.</p></details>
+        <details class="glass"><summary>Serve internet?</summary><p>Solo per acquistare e scaricare. LogicaDesk non si collega a internet e non raccoglie dati personali.</p></details>
+        <details class="glass"><summary>Funziona su Mac o Linux?</summary><p>Per ora l’app per computer funziona su Windows 10 e 11. Su telefono e tablet puoi usare la versione web gratuita.</p></details>
+        <details class="glass"><summary>Windows mi mostra un avviso: è sicuro?</summary><p>Il programma non è ancora firmato digitalmente, quindi Windows avvisa come per tutti i programmi poco diffusi. Scegli «Ulteriori informazioni» e poi «Esegui comunque».</p></details>
+        <details class="glass"><summary>E se non funziona sul mio computer?</summary><p>Scrivi all’assistenza indicando la versione di Windows: proviamo a risolvere insieme e, se non funziona, ne parliamo.</p></details>
+        <details class="glass"><summary>Che licenza ha?</summary><p>Licenza d’uso personale: puoi installarlo sui tuoi computer per studio e lavoro personale, ma non rivenderlo né distribuirlo. Il testo completo è nell’installer e nel menu Aiuto dell’app.</p></details>
+      </div>
     </div>
   </section>
 
@@ -249,7 +415,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
   </div>
 </main>
 
-<footer><div class="wrap">LogicaDesk · Appunti e tavole di verità per la logica</div></footer>
+<footer><div class="wrap">LogicaDesk · Appunti e tavole di verità per la logica · <a href="#pro">LogicaDesk Pro</a></div></footer>
 
 <script>
 document.querySelectorAll('#tt tbody button').forEach(function (b) {
@@ -260,6 +426,75 @@ document.querySelectorAll('#tt tbody button').forEach(function (b) {
     b.textContent = vero ? 'F' : 'V';
   });
 });
+
+/* ---------- Acquisto: incolla qui il link della tua pagina di vendita (Payhip, Gumroad…) ---------- */
+var LINK_ACQUISTO = "";
+
+(function () {
+  var b = document.getElementById('buy-button'), n = document.getElementById('buy-note');
+  if (LINK_ACQUISTO) { b.href = LINK_ACQUISTO; b.target = '_blank'; b.rel = 'noopener'; }
+  else { b.textContent = 'Disponibile a breve'; b.setAttribute('aria-disabled', 'true'); b.removeAttribute('href');
+         n.textContent = 'L’acquisto aprirà a breve. Nel frattempo prova gratis la versione base.'; }
+})();
+
+/* ---------- Esempi interattivi (dati calcolati con il motore di LogicaDesk Pro) ---------- */
+var DEMO = {"tavole":[{"formula":"p → q","header":["p","q","p → q"],"rows":[["V","V","V"],["V","F","F"],["F","V","V"],["F","F","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"(p → q) ∧ ¬r","header":["p","q","r","p → q","¬r","(p → q) ∧ ¬r"],"rows":[["V","V","V","V","F","F"],["V","V","F","V","V","V"],["V","F","V","F","F","F"],["V","F","F","F","V","F"],["F","V","V","V","F","F"],["F","V","F","V","V","V"],["F","F","V","V","F","F"],["F","F","F","V","V","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"p ∨ ¬p","header":["p","¬p","p ∨ ¬p"],"rows":[["V","F","V"],["F","V","V"]],"verdetto":"Tautologia"}],"equivalenze":[{"a":"¬(p ∧ q)","b":"¬p ∨ ¬q","ok":true,"vars":["p","q"],"rows":[["V","V","F","F"],["V","F","V","V"],["F","V","V","V"],["F","F","V","V"]]},{"a":"p → q","b":"q → p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V"],["V","F","F","V"],["F","V","V","F"],["F","F","V","V"]]}],"conseguenze":[{"nome":"Modus ponens","premesse":["p → q","p"],"c":"q","ok":true,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","V","F"],["F","V","V","F","V"],["F","F","V","F","F"]]},{"nome":"Affermazione del conseguente","premesse":["p → q","q"],"c":"p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","F","V"],["F","V","V","V","F"],["F","F","V","F","F"]]}]};
+(function () {
+  var chooser = document.getElementById('demo-chooser'), verdict = document.getElementById('demo-verdict'),
+      table = document.getElementById('demo-table'), note = document.getElementById('demo-note'), tabs = document.querySelectorAll('.tab');
+  function esc(t) { return String(t).replace(/[&<>]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  function cell(v) { return '<td class="' + (v === 'V' ? 'v' : 'f') + '">' + v + '</td>'; }
+  function head(cols) { return '<thead><tr>' + cols.map(function (c) { return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead>'; }
+  var render = {
+    tavole: function (d) {
+      var cls = d.verdetto === 'Tautologia' ? 'ok' : d.verdetto === 'Contraddizione' ? 'no' : 'mid';
+      verdict.className = 'verdict ' + cls;
+      verdict.innerHTML = (cls === 'ok' ? '✓ ' : cls === 'no' ? '✗ ' : '') + esc(d.verdetto);
+      table.innerHTML = head(d.header) + '<tbody>' + d.rows.map(function (r) { return '<tr>' + r.map(cell).join('') + '</tr>'; }).join('') + '</tbody>';
+      note.textContent = 'Scrivi la formula e premi Invio: righe e colonne intermedie compaiono da sole.';
+    },
+    equivalenze: function (d) {
+      var n = d.vars.length;
+      verdict.className = 'verdict ' + (d.ok ? 'ok' : 'no');
+      verdict.innerHTML = (d.ok ? '✓ Equivalenti: ' : '✗ Non equivalenti: ') + '<span class="f">' + esc(d.a) + (d.ok ? '  ≡  ' : '  ≢  ') + esc(d.b) + '</span>';
+      table.innerHTML = head(d.vars.concat(['A', 'B', ''])) + '<tbody>' + d.rows.map(function (r) {
+        var diff = r[n] !== r[n + 1];
+        return '<tr' + (diff ? ' class="diff"' : '') + '>' + r.map(cell).join('') + '<td class="mark" style="color:' + (diff ? '#6a3fd0' : '#9aa5c8') + '">' + (diff ? '≠' : '=') + '</td></tr>';
+      }).join('') + '</tbody>';
+      note.textContent = 'In viola le righe in cui le due formule danno risultati diversi.';
+    },
+    conseguenze: function (d) {
+      var n = d.vars.length, k = d.premesse.length;
+      verdict.className = 'verdict ' + (d.ok ? 'ok' : 'no');
+      verdict.innerHTML = (d.ok ? '✓ ' : '✗ ') + esc(d.nome) + ': <span class="f">' + esc(d.premesse.join(', ')) + (d.ok ? '  ⊨  ' : '  ⊭  ') + esc(d.c) + '</span>';
+      var cols = d.vars.concat(d.premesse.map(function (f, i) { return 'P' + (i + 1) + ': ' + f; }), ['C: ' + d.c, '']);
+      table.innerHTML = head(cols) + '<tbody>' + d.rows.map(function (r) {
+        var crit = r.slice(n, n + k).every(function (v) { return v === 'V'; }), bad = crit && r[n + k] === 'F';
+        return '<tr' + (bad ? ' class="bad"' : crit ? ' class="crit"' : '') + '>' + r.map(cell).join('') +
+          '<td class="mark" style="color:' + (bad ? '#6a3fd0' : '#2f4bd8') + '">' + (bad ? '✗' : crit ? '✓' : '') + '</td></tr>';
+      }).join('') + '</tbody>';
+      note.textContent = 'Azzurro: premesse vere e conclusione vera. Viola: il controesempio che rende il ragionamento sbagliato.';
+    }
+  };
+  function label(kind, d) {
+    if (kind === 'tavole') return d.formula;
+    if (kind === 'equivalenze') return d.a + '  vs  ' + d.b;
+    return d.nome;
+  }
+  function show(kind, index) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.tab === kind)); });
+    chooser.innerHTML = '';
+    DEMO[kind].forEach(function (d, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label(kind, d); b.setAttribute('aria-pressed', String(i === index));
+      b.addEventListener('click', function () { show(kind, i); });
+      chooser.appendChild(b);
+    });
+    render[kind](DEMO[kind][index]);
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.tab, 0); }); });
+  show('tavole', 1);
+})();
 </script>
 </body>
 </html>
