@@ -139,7 +139,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 .pro-band .sub{color:#b9c3ff;max-width:40rem}
 .pro-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
 .pro-head svg{width:52px;height:52px;filter:drop-shadow(0 6px 10px rgba(0,0,40,.5))}
-.pro-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+.pro-feat{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem}
 .pro-feat article{padding:1.3rem;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
 .pro-feat h3{margin:0 0 .35rem;font-size:1.08rem;color:#fff}
 .pro-feat p{margin:0;color:#c8d0ff;font-size:.96rem}
@@ -189,6 +189,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:.7rem 0 0;color:#3b4763}
 
+@media(max-width:1100px){.pro-feat{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
   .pro-feat{grid-template-columns:1fr}
   .cmp-wrap{grid-template-columns:1fr}
@@ -321,6 +322,8 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
           <article><span class="sym">≡</span><h3>Equivalenza tra formule</h3><p>Confronta due formule su tutte le righe e scopri esattamente dove differiscono.</p></article>
           <article><span class="sym">⊨</span><h3>Conseguenza logica</h3><p>Premesse e conclusione: modus ponens, sillogismi, e il controesempio quando il ragionamento è sbagliato.</p></article>
           <article><span class="sym">✎</span><h3>Modalità esercizio</h3><p>Compili tu la tavola, l’app colora le celle sbagliate e ti dice quante ne mancano.</p></article>
+          <article><span class="sym"><svg viewBox="0 0 48 32" width="48" height="32" aria-hidden="true" fill="none" stroke="#9fb0ff" stroke-width="2.5"><path d="M24 7 10 25M24 7l14 18"/><circle cx="24" cy="6" r="4.5" fill="#9fb0ff"/><circle cx="10" cy="26" r="4.5" fill="#1b2370"/><circle cx="38" cy="26" r="4.5" fill="#1b2370"/></svg></span><h3>Albero della formula</h3><p>Disegna l’albero sintattico: il connettivo principale in cima, le sottoformule livello per livello, le variabili nelle foglie.</p></article>
+          <article><span class="sym">FNC · FND</span><h3>Forme normali</h3><p>Forma normale congiuntiva e disgiuntiva, canonica dalla tavola e minima, da copiare o mettere negli appunti.</p></article>
           <article><span class="sym">⇒ ↔</span><h3>Scrittura veloce</h3><p>Mentre scrivi negli appunti, <code>-&gt;</code> diventa →, <code>=&gt;</code> diventa ⇒ e <code>&lt;-&gt;</code> diventa ↔. Più la guida alle scorciatoie da tastiera.</p></article>
         </div>
 
