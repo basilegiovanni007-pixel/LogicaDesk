@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/","downloadUrl":"https://github.com/basilegiovanni007-pixel/LogicaDesk/releases/latest/download/LogicaDeskSetup.exe","description":"Editor per appunti di logica con simboli, lettere greche, formulario di equivalenze e tavole di verità."}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk Pro","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/#pro","description":"Tavole di verità calcolate automaticamente, equivalenza tra formule, conseguenza logica, albero della formula, forme normali FNC e FND e modalità esercizio con correzione.","offers":{"@type":"Offer","price":"4.90","priceCurrency":"EUR"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk Pro","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/#pro","description":"Tavole di verità calcolate automaticamente, equivalenza tra formule, conseguenza logica, albero della formula, forme normali FNC e FND e modalità esercizio con correzione.","offers":{"@type":"Offer","price":"4.90","priceCurrency":"EUR","url":"https://payhip.com/b/Cp52M","availability":"https://schema.org/InStock"}}
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231b7dff'/%3E%3Cpath d='M32 16 18 44h28z' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
@@ -377,7 +377,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
             <li>Windows 10 e 11</li>
           </ul>
           <a class="btn pro" id="buy-button" href="#acquista">Acquista LogicaDesk Pro</a>
-          <p class="small" id="buy-note">Pagamento sicuro: dopo l’acquisto ricevi via email il link per scaricare l’installer.</p>
+          <p class="small" id="buy-note">Pagamento sicuro con carta o PayPal tramite Payhip: dopo l’acquisto ricevi via email il link per scaricare LogicaDesk Pro.</p>
         </div>
       </div>
     </div>
@@ -400,7 +400,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
     <div class="wrap">
       <h2>Domande frequenti</h2>
       <div class="faq">
-        <details class="glass"><summary>Come ricevo LogicaDesk Pro dopo l’acquisto?</summary><p>Ricevi subito un’email con il link per scaricare <strong>LogicaDeskProSetup.exe</strong>. Lo installi come la versione gratuita: si aggiunge accanto a quella, senza sostituirla.</p></details>
+        <details class="glass"><summary>Come ricevo LogicaDesk Pro dopo l’acquisto?</summary><p>Ricevi subito un’email con il link per scaricare <strong>LogicaDesk-Pro-2.0-Windows.zip</strong>. Estrai lo zip e avvia <strong>LogicaDeskProSetup.exe</strong>: le istruzioni sono nel file LEGGIMI. Si installa accanto alla versione gratuita, senza sostituirla.</p></details>
         <details class="glass"><summary>Serve internet?</summary><p>Solo per acquistare e scaricare. LogicaDesk non si collega a internet e non raccoglie dati personali.</p></details>
         <details class="glass"><summary>Funziona su Mac o Linux?</summary><p>Per ora l’app per computer funziona su Windows 10 e 11. Su telefono e tablet puoi usare la versione web gratuita.</p></details>
         <details class="glass"><summary>Windows mi mostra un avviso: è sicuro?</summary><p>Il programma non è ancora firmato digitalmente, quindi Windows avvisa come per tutti i programmi poco diffusi. Scegli «Ulteriori informazioni» e poi «Esegui comunque».</p></details>
@@ -433,7 +433,7 @@ document.querySelectorAll('#tt tbody button').forEach(function (b) {
 });
 
 /* ---------- Acquisto: incolla qui il link della tua pagina di vendita (Payhip, Gumroad…) ---------- */
-var LINK_ACQUISTO = "";
+var LINK_ACQUISTO = "https://payhip.com/b/Cp52M";
 
 (function () {
   var b = document.getElementById('buy-button'), n = document.getElementById('buy-note');
