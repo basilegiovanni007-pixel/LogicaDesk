@@ -30,11 +30,18 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;gap:.6rem;padding:.4
 .btn{font:600 .92rem var(--ui);padding:.5rem .9rem;border-radius:13px;border:1px solid rgba(40,60,160,.3);color:var(--navy);cursor:pointer;
  background:linear-gradient(#fff,#e3eeff 55%,#c9dcff);box-shadow:inset 0 1px 0 #fff,0 4px 10px -6px rgba(40,70,200,.5)}
 .btn:active{transform:translateY(1px);filter:brightness(.96)}
+.btn:focus{outline:none}.btn:focus-visible{outline:3px solid #0a84ff;outline-offset:2px}
 .btn.lil{background:linear-gradient(#faf6ff,#d6c8fb);color:#5a3db0;border-color:rgba(90,61,176,.3)}
 .btn.peri{background:linear-gradient(#f6f7ff,#c3ccff);color:#3447b5}
+.btn.lock{background:linear-gradient(#f7f8fa,#e3e6ed);color:#9aa1b3;border-color:#d6dae6;box-shadow:inset 0 1px 0 #fff}
 .btn.on{color:#fff;border-color:#0a63d6;background:linear-gradient(#8ccaff,#3b97ff 45%,#1b6fe8);text-shadow:0 1px 0 rgba(0,40,120,.35)}
 .sep{width:1px;background:var(--line);margin:0 .1rem}
 .keys{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 .6rem .6rem}
+.symrow{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem}
+.symrow.wide #keys{width:calc(10 * 42px + 9 * .4rem + 1.2rem);flex:none}
+.quick{display:none;grid-template-columns:repeat(3,auto);gap:.45rem;padding:0 .6rem .6rem}
+.symrow.wide .quick{display:grid}
+header .btn{margin-left:auto}
 .key{width:42px;height:42px;border-radius:13px;font:700 1.15rem var(--math);border:1px solid rgba(60,80,170,.3);padding:0;cursor:pointer;
  box-shadow:inset 0 1px 0 #fff,inset 0 -8px 12px -10px rgba(60,80,170,.4)}
 .key:nth-child(3n+1){background:linear-gradient(#f7fbff,#bde0ff);color:#1f5fae}
@@ -49,6 +56,10 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;gap:.6rem;padding:.4
 .ctl label{display:flex;align-items:center;gap:.3rem;font-size:.9rem;color:var(--mut)}
 .ctl output{min-width:1.6rem;text-align:center;font-weight:700;color:var(--ink)}
 .ctl .btn{padding:.35rem .7rem}
+.fbar{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+.fbar span{font-size:.9rem;color:#9aa1b3}
+.fbar input{flex:1 1 15rem;min-width:0;font:15px var(--math);padding:.5rem .7rem;border-radius:11px;border:1px solid #e3e6ed;background:#f5f6f9;color:#9aa1b3;cursor:pointer}
+.fbar .btn{padding:.35rem .7rem}
 .grid{overflow:auto;padding:.8rem;flex:1}
 table{border-collapse:collapse;border:2px solid #2c3e9e;background:#fff;margin:0 auto}
 td{padding:0;border:1px solid #b8c4e6}
@@ -63,6 +74,25 @@ dialog::backdrop{background:rgba(30,40,100,.35)}
 .list{overflow:auto;max-height:62vh;padding:.3rem 1rem 1rem}
 .law{background:#fff;border:1px solid var(--line);border-radius:16px;padding:.8rem .9rem;margin-bottom:.6rem}
 .law b{display:block}.law pre{margin:.3rem 0;font:1.02rem/1.5 var(--math);color:#3730a3;white-space:pre-wrap}.law p{margin:0 0 .5rem;color:var(--mut);font-size:.9rem}
+.pro .band{display:flex;align-items:center;gap:.5rem;padding:1.1rem 1.4rem;background:#1c1f66;color:#fff;font-size:1.2rem;font-weight:700}
+.pro .band i{font:800 .7rem var(--ui);font-style:normal;padding:.15rem .45rem;background:#6d4df0;border-radius:6px;letter-spacing:.05em}
+.pro .body{padding:1.1rem 1.4rem 1.3rem;overflow:auto}
+.pro small{display:block;font-weight:700;color:#6d4df0}
+.pro h3{margin:.1rem 0 .4rem;font-size:1.3rem}
+.pro .body>p{margin:0;color:var(--mut);font-size:.95rem}
+.pro .inc{margin:1rem 0;padding:.7rem 1rem .8rem;background:#f5f3ff;border:1px solid #e3dcfb;border-radius:14px}
+.pro .inc b{display:block;font-size:.85rem;color:#4b2fb5;margin-bottom:.3rem}
+.pro ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,auto);grid-auto-flow:column;gap:.1rem 1rem;font-size:.88rem}
+.pro li::before{content:"✓  ";color:#6d4df0;font-weight:800}
+.pro li.me{font-weight:700}
+.pro .price{font-weight:700;color:#2a2580;margin:0 0 1rem}
+.pro .row,.menu .row{display:flex;flex-wrap:wrap;gap:.5rem}
+.pro .row .on{flex:none}
+@media(max-width:480px){.pro ul{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
+.menu{width:min(420px,94vw)}
+.menu .list{display:grid;gap:.5rem;padding:1rem}
+.menu .list .btn{text-align:left}
+.text{white-space:pre-wrap;font:.92rem/1.55 var(--ui);color:#334155;margin:0;padding:.3rem 1.2rem 1.2rem;overflow:auto;max-height:62vh}
 #msg{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);background:#1e2f86;color:#fff;padding:.5rem 1rem;border-radius:999px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none}
 #msg.on{opacity:1}
 #pr{display:none}
@@ -73,31 +103,60 @@ dialog::backdrop{background:rgba(30,40,100,.35)}
 <header>
  <svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86c8ff"/><stop offset="1" stop-color="#1b6bff"/></linearGradient></defs><rect x="2" y="2" width="48" height="48" rx="15" fill="url(#g)"/><rect x="5" y="4" width="42" height="20" rx="11" fill="#fff" opacity=".35"/><path d="M26 15 14 36h24z" fill="none" stroke="#ebf3ff" stroke-width="2.6" stroke-linejoin="round"/><circle cx="26" cy="15" r="5" fill="#fff"/><circle cx="14" cy="36" r="5" fill="#fff"/><circle cx="38" cy="36" r="5" fill="#67e8f9"/></svg>
  <b>LogicaDesk</b>
+ <button class="btn" id="bMenu">☰ Menu</button>
 </header>
 <main>
  <div class="glass">
   <div class="bar">
-   <button class="btn on" id="tN">Appunti</button><button class="btn" id="tT">Tavola di verità</button><span class="sep"></span>
    <button class="btn" id="bOpen">Apri</button><button class="btn on" id="bSave">Salva</button>
    <button class="btn peri" id="bPdf">PDF</button><button class="btn lil" id="bDoc">Word</button><span class="sep"></span>
-   <button class="btn" id="bLaw">Formulario</button><button class="btn lil" id="bGr">α Greche</button>
+   <button class="btn on" id="tN">Appunti</button><button class="btn" id="tT">Tavola di verità</button><span class="sep"></span>
+   <button class="btn" id="bLaw">Formulario</button>
+   <button class="btn lock" data-pro="equivalenza">≡ Equivalenza</button><button class="btn lock" data-pro="conseguenza">⊨ Conseguenza</button><span class="sep"></span>
+   <button class="btn lil" id="bGr">α Greche</button>
   </div>
-  <div class="keys" id="keys"></div>
+  <div class="symrow" id="symrow">
+   <div class="keys" id="keys"></div>
+   <div class="quick" id="quick">
+    <button class="btn lock" data-pro="dimostrazioni">⊢ Dimostrazioni</button><button class="btn lock" data-pro="predicati">∀∃ Predicati</button><button class="btn lock" data-pro="tavola_grande">▤ Tavola grande</button>
+    <button class="btn lock" data-pro="circuiti">⊐ Circuiti</button><button class="btn lock" data-pro="analisi">◎ Analisi</button><button class="btn lock" data-pro="karnaugh">▦ Karnaugh</button>
+   </div>
+  </div>
   <div class="keys" id="greek"></div>
  </div>
  <div class="glass doc">
-  <textarea id="ed" placeholder="Scrivi qui i tuoi appunti di logica…" spellcheck="false" autocapitalize="off"></textarea>
+  <textarea id="ed" placeholder="Inizia a scrivere qui…&#10;&#10;Puoi inserire simboli con la barra qui sopra, ad esempio:  (p ∧ q) → r" spellcheck="false" autocapitalize="off"></textarea>
   <div id="tv">
    <div class="ctl">
     <label>Righe <button class="btn" data-d="r-1">−</button><output id="oR"></output><button class="btn" data-d="r1">+</button></label>
     <label>Colonne <button class="btn" data-d="c-1">−</button><output id="oC"></output><button class="btn" data-d="c1">+</button></label>
     <button class="btn peri" id="bClr">Ripulisci tavola</button><button class="btn on" id="bIns">Inserisci negli appunti</button>
    </div>
+   <div class="fbar">
+    <span>Formula</span><input readonly tabindex="-1" data-pro="genera" value="Scrivi una formula e la tavola si compila da sola  ·  LogicaDesk Pro">
+    <button class="btn lock" data-pro="genera">Genera tavola</button><button class="btn lock" data-pro="esercizio">✎ Esercizio</button>
+    <button class="btn lock" data-pro="albero">Albero</button><button class="btn lock" data-pro="forme">FNC / FND</button>
+   </div>
    <div class="grid"><table id="tb"></table></div>
   </div>
  </div>
 </main>
 <dialog id="dlg"><div class="dh"><input id="q" type="search" placeholder="Cerca per nome o simbolo…"><button class="btn" id="xClose">Chiudi</button></div><div class="list" id="laws"></div></dialog>
+<dialog id="pro" class="pro"><div class="band">LogicaDesk <i>PRO</i></div><div class="body">
+ <small>Funzione disponibile in LogicaDesk Pro</small><h3 id="proT"></h3><p id="proD"></p>
+ <div class="inc"><b>Con LogicaDesk Pro ottieni:</b><ul id="proL"></ul></div>
+ <p class="price">4,90 €  ·  una volta sola, nessun abbonamento</p>
+ <div class="row"><button class="btn on" id="proGo">Scopri LogicaDesk Pro</button><button class="btn" id="proNo">Non ora</button></div>
+</div></dialog>
+<dialog id="menu" class="menu"><div class="list">
+ <button class="btn" id="mNew">Nuovo</button>
+ <button class="btn" id="mSite">Sito di LogicaDesk</button>
+ <button class="btn" id="mPro">Scopri LogicaDesk Pro</button>
+ <button class="btn" id="mLic">Licenza d’uso</button>
+ <button class="btn" id="mInfo">Informazioni su LogicaDesk</button>
+ <button class="btn peri" id="mClose">Chiudi</button>
+</div></dialog>
+<dialog id="txt"><div class="dh"><b id="txtT" style="flex:1;align-self:center"></b><button class="btn" id="txtClose">Chiudi</button></div><pre class="text" id="txtB"></pre></dialog>
 <input type="file" id="file" accept=".txt,.md,.logic,.tsv" hidden>
 <div id="pr"></div><div id="msg"></div>
 <script>
@@ -106,7 +165,7 @@ const $=s=>document.querySelector(s), ls=(k,v)=>{try{return v===undefined?localS
 const ed=$('#ed'), tb=$('#tb');
 let mode='n', last=ed, T=JSON.parse(ls('ld_t')||'null')||{r:5,c:4,d:[]};
 const msg=t=>{const m=$('#msg');m.textContent=t;m.classList.add('on');setTimeout(()=>m.classList.remove('on'),1800)};
-const kind=(v)=>{v=v.trim().toLowerCase();return ['v','vero','t','true','1'].includes(v)?'v':['f','falso','false','0'].includes(v)?'f':''};
+const kind=(v)=>{v=v.trim().toLowerCase();return ['v','vero','t','true','1','⊤'].includes(v)?'v':['f','falso','false','0','⊥'].includes(v)?'f':''};
 /* tasti */
 const mk=(box,arr)=>arr.forEach(([s,n])=>{const b=document.createElement('button');b.className='key';b.textContent=s;b.title=n;b.setAttribute('aria-label',n);
  b.onpointerdown=e=>e.preventDefault();b.onclick=()=>ins(s);box.append(b)});
@@ -163,7 +222,31 @@ function laws(f=''){f=f.toLowerCase();const L=$('#laws');L.innerHTML='';D.laws.f
  const e=document.createElement('div');e.className='law';e.innerHTML=`<b>${esc(n)}</b><pre>${esc(fm)}</pre><p>${esc(d)}</p>`;
  const b=document.createElement('button');b.className='btn';b.textContent='Inserisci';b.onclick=()=>{$('#dlg').close();ins(fm.replace(/\s{3,}·\s{3,}/g,'\n'))};e.append(b);L.append(e)})}
 $('#bLaw').onclick=()=>{laws();$('#q').value='';$('#dlg').showModal()};$('#q').oninput=e=>laws(e.target.value);$('#xClose').onclick=()=>$('#dlg').close();
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();$('#bSave').click()}});
+document.addEventListener('keydown',e=>{if(!(e.ctrlKey||e.metaKey))return;const k=e.key.toLowerCase();
+ if(k==='s'){e.preventDefault();$('#bSave').click()}else if(k==='o'){e.preventDefault();$('#bOpen').click()}});
+/* funzioni di LogicaDesk Pro, mostrate in grigio come nella versione per computer */
+const SITO='https://basilegiovanni007-pixel.github.io/LogicaDesk/';
+const PRO=[["genera", "Tavola calcolata automaticamente", "Scrivi una formula e ottieni subito tutte le righe della tavola di verità, con le colonne intermedie e il verdetto: tautologia, contraddizione o contingente."], ["esercizio", "Modalità esercizio", "LogicaDesk Pro prepara la tavola vuota, la compili tu e le celle sbagliate vengono evidenziate, con il punteggio e la soluzione."], ["equivalenza", "Equivalenza tra formule", "Confronta due formule su tutte le righe della tavola e scopri esattamente dove danno risultati diversi."], ["conseguenza", "Conseguenza logica  ⊨", "Scrivi premesse e conclusione: LogicaDesk Pro verifica se il ragionamento è valido e, se non lo è, ti mostra il controesempio."], ["albero", "Albero della formula", "Disegna l'albero sintattico della formula: il connettivo principale in cima, le sottoformule livello per livello e le variabili nelle foglie."], ["forme", "Forme normali FNC e FND", "Ricava la forma normale congiuntiva e disgiuntiva della formula: canonica dalla tavola di verità, minima, e passo per passo con il nome di ogni legge usata (De Morgan, distributività...)."], ["analisi", "Analisi con controesempio", "Scopri se la formula è una tautologia, una contraddizione o è contingente. Se non è sempre vera, LogicaDesk Pro ti mostra il controesempio ed evidenzia la riga nella tavola."], ["karnaugh", "Mappe di Karnaugh", "La forma più corta della formula con il metodo di Quine-McCluskey, passo per passo, e la mappa di Karnaugh disegnata fino a 6 variabili, con i raggruppamenti colorati."], ["tavola_grande", "Formule grandi e risolutore SAT", "Tavole fino a 20 variabili (oltre un milione di righe) da sfogliare a pagine, con il filtro «solo righe vere / false». Oltre, il risolutore SAT risponde in una frazione di secondo."], ["predicati", "Logica dei predicati  ∀ ∃", "Formule con quantificatori e predicati come P(x) e R(x, y): costruisci un modello con un clic, verifica la formula con la spiegazione, oppure lascia che LogicaDesk Pro trovi un controesempio."], ["dimostrazioni", "Tableaux e deduzione naturale", "Dimostra un ragionamento con un tableau semantico disegnato ad albero, oppure con la deduzione naturale scritta passo per passo, con la regola usata in ogni riga."], ["circuiti", "Circuiti logici", "Trasforma una formula in un circuito con porte AND, OR, NOT, XOR, NAND, NOR e simulalo: accendi gli ingressi con un clic e guarda la corrente nei fili. Anche con sole porte NAND."], ["esportazione", "Esporta in PDF, PNG, LaTeX e CSV", "Salva tavole, passaggi, mappe, dimostrazioni e circuiti in PDF, PNG, LaTeX o Excel, e ritrova le formule usate nella cronologia e nei preferiti."]];
+function pro(k){const f=PRO.find(x=>x[0]===k);$('#proT').textContent=f[1];$('#proD').textContent=f[2];
+ $('#proL').innerHTML='';PRO.forEach(x=>{const li=document.createElement('li');li.textContent=x[1];if(x[0]===k)li.className='me';$('#proL').append(li)});
+ $('#pro').showModal()}
+document.querySelectorAll('[data-pro]').forEach(b=>{b.title='Funzione di LogicaDesk Pro: clicca per saperne di più';b.onclick=()=>pro(b.dataset.pro)});
+$('#proGo').onclick=()=>{$('#pro').close();open(SITO+'#pro','_blank','noopener')};$('#proNo').onclick=()=>$('#pro').close();
+/* i pulsanti rapidi accanto ai simboli si nascondono se lo spazio non basta */
+const sr=$('#symrow'),qw=()=>{sr.classList.add('wide');const ok=sr.scrollWidth<=sr.clientWidth+1;sr.classList.toggle('wide',ok)};
+addEventListener('resize',qw);qw();
+/* menu */
+function txt(t,b){$('#txtT').textContent=t;$('#txtB').textContent=b;$('#menu').close();$('#txt').showModal()}
+$('#bMenu').onclick=()=>$('#menu').showModal();$('#mClose').onclick=()=>$('#menu').close();$('#txtClose').onclick=()=>$('#txt').close();
+$('#mNew').onclick=()=>{$('#menu').close();if(ed.value.trim()&&!confirm('Vuoi cancellare gli appunti e iniziarne di nuovi? Se ti servono, salvali prima.'))return;
+ ed.value='';ls('ld_n','');setMode('n');ed.focus();msg('Nuovo documento')};
+$('#mSite').onclick=()=>{$('#menu').close();open(SITO,'_blank','noopener')};
+$('#mPro').onclick=()=>{$('#menu').close();open(SITO+'#pro','_blank','noopener')};
+$('#mLic').onclick=()=>txt('Licenza d’uso — LogicaDesk',"LOGICADESK - LICENZA D'USO GRATUITA\n\nLeggi con attenzione prima di installare. Installando o usando LogicaDesk\naccetti queste condizioni.\n\n1. Cosa puoi fare\n   Puoi installare e usare LogicaDesk gratuitamente, per studio,\n   insegnamento o lavoro personale, su tutti i computer che vuoi.\n   Puoi condividere con altri l'installer originale, gratis e senza\n   modificarlo, oppure il link al sito ufficiale.\n\n2. Cosa non puoi fare\n   Non puoi vendere LogicaDesk o farlo pagare in qualsiasi forma, né\n   distribuire versioni modificate del programma o del suo codice\n   sorgente, né presentarlo come opera tua o rimuovere questa licenza.\n\n3. Il codice sorgente\n   Il codice sorgente è disponibile sul sito per studio e per uso\n   personale: puoi leggerlo, eseguirlo e modificarlo per te, ma non\n   pubblicare o distribuire le versioni modificate.\n\n4. I tuoi file\n   I documenti che crei con LogicaDesk sono tuoi. Il programma funziona\n   offline e non invia i tuoi dati a nessuno.\n\n5. Nessuna garanzia\n   Il programma è fornito gratuitamente e \"così com'è\", senza garanzie di\n   alcun tipo. Conserva sempre una copia dei tuoi file.\n\n6. Limitazione di responsabilità\n   Nei limiti consentiti dalla legge, l'autore non è responsabile di danni\n   o perdite di dati derivanti dall'uso del programma.\n\n7. LogicaDesk Pro\n   La versione a pagamento LogicaDesk Pro ha una licenza separata e non è\n   coperta da questa licenza gratuita.\n\nSito ufficiale: https://basilegiovanni007-pixel.github.io/LogicaDesk/");
+$('#mInfo').onclick=()=>txt('Informazioni su LogicaDesk','LogicaDesk — appunti e tavole di verità per la logica.\n\n'+
+ 'Versione gratuita, distribuita con licenza d’uso gratuita (Menu › Licenza d’uso).\n'+
+ 'Funziona anche offline: i tuoi appunti restano su questo dispositivo e nessun dato viene inviato.\n\n'+
+ 'Vuoi le tavole calcolate da sole, le equivalenze, la conseguenza logica e gli esercizi corretti? Scopri LogicaDesk Pro dal menu.\n\n'+SITO);
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>

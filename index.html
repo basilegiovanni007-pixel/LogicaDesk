@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LogicaDesk – appunti e tavole di verità per la logica</title>
-<meta name="description" content="LogicaDesk è un editor per Windows per appunti di logica: simboli, lettere greche, formulario, tavole di verità. Con LogicaDesk Pro le tavole si calcolano da sole, con equivalenze, conseguenza logica ed esercizi corretti.">
+<meta name="description" content="LogicaDesk è un editor per Windows per appunti di logica: simboli, lettere greche, formulario, tavole di verità. Con LogicaDesk Pro le tavole si calcolano da sole, con controesempi, equivalenze, conseguenza logica, mappe di Karnaugh, logica dei predicati, tableaux, deduzione naturale e circuiti logici.">
 <!-- GOOGLE-VERIFICA: incolla qui sotto la riga <meta name="google-site-verification" ...> -->
 <link rel="canonical" href="https://basilegiovanni007-pixel.github.io/LogicaDesk/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="LogicaDesk">
 <meta property="og:title" content="LogicaDesk – appunti e tavole di verità per la logica">
-<meta property="og:description" content="Editor per Windows con simboli logici, lettere greche, formulario di equivalenze, tavole di verità ed esportazione in PDF e Word.">
+<meta property="og:description" content="Editor per Windows con simboli logici, lettere greche, formulario di equivalenze, tavole di verità ed esportazione in PDF e Word. Con LogicaDesk Pro: controesempi, Karnaugh, predicati, dimostrazioni e circuiti logici.">
 <meta property="og:url" content="https://basilegiovanni007-pixel.github.io/LogicaDesk/">
 <meta property="og:image" content="https://basilegiovanni007-pixel.github.io/LogicaDesk/anteprima.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/","downloadUrl":"https://github.com/basilegiovanni007-pixel/LogicaDesk/releases/latest/download/LogicaDeskSetup.exe","description":"Editor per appunti di logica con simboli, lettere greche, formulario di equivalenze e tavole di verità."}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk Pro","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/#pro","description":"Tavole di verità calcolate automaticamente, equivalenza tra formule, conseguenza logica, albero della formula, forme normali FNC e FND e modalità esercizio con correzione.","offers":{"@type":"Offer","price":"4.90","priceCurrency":"EUR","url":"https://payhip.com/b/Cp52M","availability":"https://schema.org/InStock"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LogicaDesk Pro","applicationCategory":"EducationalApplication","operatingSystem":"Windows 10, Windows 11","inLanguage":"it","url":"https://basilegiovanni007-pixel.github.io/LogicaDesk/#pro","description":"Tavole di verità calcolate automaticamente, analisi con controesempio, equivalenza tra formule, conseguenza logica, tavole fino a 20 variabili con risolutore SAT, forme normali FNC e FND passo per passo, mappe di Karnaugh, logica dei predicati, tableaux, deduzione naturale, circuiti logici, esportazione in PDF, PNG, LaTeX e CSV e modalità esercizio con correzione.","offers":{"@type":"Offer","price":"4.90","priceCurrency":"EUR","url":"https://payhip.com/b/Cp52M","availability":"https://schema.org/InStock"}}
 </script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231b7dff'/%3E%3Cpath d='M32 16 18 44h28z' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
@@ -145,6 +145,12 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 .pro-feat p{margin:0;color:#c8d0ff;font-size:.96rem}
 .pro-feat .sym{font:700 1.5rem var(--math);color:#9fb0ff;display:block;margin-bottom:.4rem}
 
+.pro-new{display:flex;align-items:center;gap:.7rem;margin:2.2rem 0 0;font-size:1.25rem;color:#fff}
+.pill.new{background:linear-gradient(180deg,#8ff0ff,#38bdf8);color:#0c1240;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.pro-new+.pro-feat{margin-top:1rem}
+.cmp .pill.new{font-size:.68rem;padding:.15rem .55rem;margin-right:.35rem}
+.pro-feat article.nuovo{background:rgba(255,255,255,.12);border-color:rgba(159,176,255,.45)}
+.pro-feat code{font-size:.9em;color:#e4e8ff}
 .demo{margin-top:2rem;padding:1.6rem;border-radius:24px;background:#fff;color:var(--ink)}
 .tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .tab{all:unset;cursor:pointer;padding:.5rem 1rem;border-radius:12px;font-weight:600;font-size:.95rem;color:#3b34b0;background:#eef0ff;border:1px solid #d9dcff}
@@ -165,6 +171,14 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 .dt tr.diff td{background:#ece3ff}.dt tr.crit td{background:#e3eaff}.dt tr.bad td{background:#ece3ff}
 .dt td.mark{font-family:var(--ui);font-weight:800}
 .demo-note{color:var(--muted);font-size:.88rem;margin:.8rem 0 0}
+.dt tr.falsa td{background:#f6f2ff}
+.km{border-collapse:collapse;font:1.1rem var(--math);text-align:center}
+.km th{padding:.45rem .8rem;color:#1b2370;font-weight:700;white-space:nowrap}
+.km thead th{border-bottom:2px solid #2c3e9e}.km tbody th{border-right:2px solid #2c3e9e}
+.km td{width:3.2rem;height:3rem;border:1px solid #c3caea;font-weight:700;color:#9aa5c8}
+.km td.uno{color:#1b2370}
+.km-legend{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0}
+.km-legend span{padding:.25rem .75rem;border-radius:999px;font:600 1rem var(--math);color:#1b2370;border:1px solid}
 
 .cmp-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:1.1rem;align-items:start}
 .cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:.98rem}
@@ -226,7 +240,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
 <main id="top">
   <div class="wrap hero">
     <div>
-      <a class="news" href="#pro"><span class="pill pro">PRO</span> Novità: tavole calcolate da sole, equivalenze, ⊨ ed esercizi corretti →</a>
+      <a class="news" href="#pro"><span class="pill pro">PRO</span> Novità: controesempi, Karnaugh, predicati, dimostrazioni e circuiti →</a>
       <h1>Scrivi la logica con i simboli giusti.</h1>
       <p class="lead">LogicaDesk è un editor per Windows per appunti ed esercitazioni di logica: simboli a un clic, tavole di verità vere e un formulario sempre a portata di mano. Tutto in italiano.</p>
       <div class="cta">
@@ -315,16 +329,28 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
             <circle cx="26" cy="11" r="4.2" fill="#fff"/><circle cx="15" cy="29" r="4.2" fill="#fff"/><circle cx="37" cy="29" r="4.2" fill="#67e8f9"/>
             <rect x="13" y="36" width="26" height="9" rx="4.5" fill="#fff"/><text x="26" y="43" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7" font-weight="800" fill="#4a2ed6">PRO</text></svg><span class="pill pro">LOGICADESK PRO</span></div>
         <h2>Dalla formula alla tavola di verità in un secondo.</h2>
-        <p class="sub">LogicaDesk Pro calcola le tavole al posto tuo, confronta formule, verifica le conseguenze logiche e corregge i tuoi esercizi. Funziona offline, in italiano, su Windows.</p>
+        <p class="sub">LogicaDesk Pro calcola le tavole al posto tuo, trova i controesempi, semplifica le formule, scrive le dimostrazioni, disegna i circuiti e corregge i tuoi esercizi. Funziona offline, in italiano, su Windows.</p>
         <div class="pro-feat">
-          <article><span class="sym">p → q</span><h3>Tavole calcolate da sole</h3><p>Scrivi la formula, anche con <code>-&gt;</code>, <code>&amp;</code>, <code>|</code>: ottieni tutte le righe e le colonne intermedie, fino a 5 variabili.</p></article>
+          <article><span class="sym">p → q</span><h3>Tavole calcolate da sole</h3><p>Scrivi la formula, anche con <code>-&gt;</code>, <code>&amp;</code>, <code>|</code>: ottieni tutte le righe e le colonne intermedie, fino a 5 variabili (e fino a 20 nella Tavola grande).</p></article>
           <article><span class="sym">✓ ✗</span><h3>Verdetto immediato</h3><p>Tautologia, contraddizione o contingente: lo vedi subito accanto alla tavola.</p></article>
-          <article><span class="sym">≡</span><h3>Equivalenza tra formule</h3><p>Confronta due formule su tutte le righe e scopri esattamente dove differiscono.</p></article>
+          <article><span class="sym">≡</span><h3>Equivalenza tra formule</h3><p>Confronta due formule su tutte le righe, anche con 20 variabili, e scopri esattamente dove differiscono.</p></article>
           <article><span class="sym">⊨</span><h3>Conseguenza logica</h3><p>Premesse e conclusione: modus ponens, sillogismi, e il controesempio quando il ragionamento è sbagliato.</p></article>
           <article><span class="sym">✎</span><h3>Modalità esercizio</h3><p>Compili tu la tavola, l’app colora le celle sbagliate e ti dice quante ne mancano.</p></article>
           <article><span class="sym"><svg viewBox="0 0 48 32" width="48" height="32" aria-hidden="true" fill="none" stroke="#9fb0ff" stroke-width="2.5"><path d="M24 7 10 25M24 7l14 18"/><circle cx="24" cy="6" r="4.5" fill="#9fb0ff"/><circle cx="10" cy="26" r="4.5" fill="#1b2370"/><circle cx="38" cy="26" r="4.5" fill="#1b2370"/></svg></span><h3>Albero della formula</h3><p>Disegna l’albero sintattico: il connettivo principale in cima, le sottoformule livello per livello, le variabili nelle foglie.</p></article>
-          <article><span class="sym">FNC · FND</span><h3>Forme normali</h3><p>Forma normale congiuntiva e disgiuntiva, canonica dalla tavola e minima, da copiare o mettere negli appunti.</p></article>
+          <article><span class="sym">FNC · FND</span><h3>Forme normali</h3><p>Forma normale congiuntiva e disgiuntiva, canonica dalla tavola e minima, e ora anche passo per passo con il nome di ogni legge: De Morgan, doppia negazione, distributività…</p></article>
           <article><span class="sym">⇒ ↔</span><h3>Scrittura veloce</h3><p>Mentre scrivi negli appunti, <code>-&gt;</code> diventa →, <code>=&gt;</code> diventa ⇒ e <code>&lt;-&gt;</code> diventa ↔. Più la guida alle scorciatoie da tastiera.</p></article>
+        </div>
+
+        <h3 class="pro-new"><span class="pill new">NUOVO</span> Le novità di LogicaDesk Pro</h3>
+        <div class="pro-feat">
+          <article class="nuovo"><span class="sym">✗ p = F</span><h3>Analisi con controesempio</h3><p>Se la formula non è sempre vera, LogicaDesk Pro ti mostra il controesempio e illumina la riga nella tavola. E ti dà anche un esempio che la rende vera.</p></article>
+          <article class="nuovo"><span class="sym">2²⁰</span><h3>Formule grandi</h3><p>La Tavola grande arriva a 20 variabili, oltre un milione di righe, da sfogliare a pagine con il filtro «solo righe vere / false». Oltre, il risolutore SAT risponde in una frazione di secondo, anche con 100 variabili.</p></article>
+          <article class="nuovo"><span class="sym">▦</span><h3>Karnaugh e forma minima</h3><p>La forma più corta della formula con il metodo di Quine-McCluskey, con tutti i passaggi, e la mappa di Karnaugh disegnata fino a 6 variabili con i gruppi colorati.</p></article>
+          <article class="nuovo"><span class="sym">∀x ∃y</span><h3>Logica dei predicati</h3><p>Formule con ∀, ∃, predicati come P(x) e R(x, y) e l’uguaglianza. Costruisci un modello con un clic e verifica la formula con la spiegazione, oppure lascia che l’app trovi da sola un controesempio.</p></article>
+          <article class="nuovo"><span class="sym">⊢</span><h3>Tableaux e deduzione naturale</h3><p>Il tableau semantico disegnato ad albero, ramo per ramo. E la deduzione naturale in stile Fitch scritta in automatico, con la regola di ogni riga, ricontrollata da un verificatore.</p></article>
+          <article class="nuovo"><span class="sym"><svg viewBox="0 0 56 32" width="56" height="32" aria-hidden="true" fill="none" stroke="#9fb0ff" stroke-width="2.5"><path d="M2 9h14M2 23h14M16 4h12a12 12 0 0 1 0 24H16z"/><path d="M40 16h14"/></svg></span><h3>Circuiti logici</h3><p>Dalla formula al circuito con porte AND, OR, NOT, XOR, NAND, NOR e XNOR, anche con sole NAND o sole NOR. Accendi gli ingressi con un clic e guarda la corrente nei fili. E dal circuito torni alla formula.</p></article>
+          <article class="nuovo"><span class="sym">PDF · LaTeX</span><h3>Esporta e ritrova</h3><p>Tavole, passaggi, mappe, dimostrazioni e circuiti in PNG, PDF, LaTeX o CSV per Excel. La cronologia e i preferiti con la stella ti riaprono una formula con un clic.</p></article>
+          <article class="nuovo"><span class="sym">⊕ ↑ ↓</span><h3>Un motore logico nuovo</h3><p>Tutti i connettivi, anche XOR, NAND e NOR. Scrivi come preferisci (<code>and</code>, <code>or</code>, <code>not</code>, <code>-&gt;</code>), con variabili come <code>p1</code> o <code>Pioggia</code>. Gli errori ti dicono il punto esatto. Controllato da oltre 5.700 prove automatiche.</p></article>
         </div>
 
         <div class="demo" id="demo">
@@ -332,6 +358,8 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
             <button class="tab" role="tab" aria-selected="true" data-tab="tavole">Tavola automatica</button>
             <button class="tab" role="tab" aria-selected="false" data-tab="equivalenze">Equivalenza ≡</button>
             <button class="tab" role="tab" aria-selected="false" data-tab="conseguenze">Conseguenza ⊨</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="analisi">Controesempio</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="karnaugh">Karnaugh ▦</button>
           </div>
           <div class="chooser" id="demo-chooser"></div>
           <p class="verdict" id="demo-verdict"></p>
@@ -363,6 +391,15 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
               <tr><td>Albero della formula</td><td class="no">—</td><td class="yes">✓</td></tr>
               <tr><td>Forme normali FNC e FND (canoniche e minime)</td><td class="no">—</td><td class="yes">✓</td></tr>
               <tr><td>Conversione automatica dei simboli</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Analisi con controesempio</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Tavola grande (20 variabili) e risolutore SAT</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Forme normali passo per passo</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Forma minima e mappe di Karnaugh</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Logica dei predicati (∀, ∃)</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Tableaux e deduzione naturale</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Circuiti logici con simulazione</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Esportazione in PNG, PDF, LaTeX e CSV</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td><span class="pill new">NUOVO</span> Cronologia e preferiti</td><td class="no">—</td><td class="yes">✓</td></tr>
             </tbody>
           </table>
         </div>
@@ -371,7 +408,7 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
           <p class="amount">4,90 €</p>
           <p class="once">una volta sola · nessun abbonamento</p>
           <ul>
-            <li>Tutte le funzioni Pro</li>
+            <li>Tutte le funzioni Pro, comprese le novità</li>
             <li>Aggiornamenti della versione 2 inclusi</li>
             <li>Funziona offline, i tuoi dati restano tuoi</li>
             <li>Windows 10 e 11</li>
@@ -401,6 +438,8 @@ footer{padding:0 0 2.5rem;color:var(--muted);font-size:.92rem;text-align:center}
       <h2>Domande frequenti</h2>
       <div class="faq">
         <details class="glass"><summary>Come ricevo LogicaDesk Pro dopo l’acquisto?</summary><p>Ricevi subito un’email con il link per scaricare <strong>LogicaDesk-Pro-2.0-Windows.zip</strong>. Estrai lo zip e avvia <strong>LogicaDeskProSetup.exe</strong>: le istruzioni sono nel file LEGGIMI. Si installa accanto alla versione gratuita, senza sostituirla.</p></details>
+        <details class="glass"><summary>Ho già LogicaDesk Pro: ricevo anche le novità?</summary><p>Sì: gli aggiornamenti della versione 2 sono inclusi nel prezzo. Riapri il link dell’email di acquisto e scarica di nuovo LogicaDesk Pro: si installa sopra la versione che hai già.</p></details>
+        <details class="glass"><summary>Fino a quante variabili arriva?</summary><p>La tavola nella finestra principale arriva a 5 variabili. Analisi, equivalenza, conseguenza logica e Tavola grande arrivano a 20 (oltre un milione di righe); oltre, risponde il risolutore SAT. La mappa di Karnaugh si disegna fino a 6 variabili.</p></details>
         <details class="glass"><summary>Serve internet?</summary><p>Solo per acquistare e scaricare. LogicaDesk non si collega a internet e non raccoglie dati personali.</p></details>
         <details class="glass"><summary>Funziona su Mac o Linux?</summary><p>Per ora l’app per computer funziona su Windows 10 e 11. Su telefono e tablet puoi usare la versione web gratuita.</p></details>
         <details class="glass"><summary>Windows mi mostra un avviso: è sicuro?</summary><p>Il programma non è ancora firmato digitalmente, quindi Windows avvisa come per tutti i programmi poco diffusi. Scegli «Ulteriori informazioni» e poi «Esegui comunque».</p></details>
@@ -443,7 +482,7 @@ var LINK_ACQUISTO = "https://payhip.com/b/Cp52M";
 })();
 
 /* ---------- Esempi interattivi (dati calcolati con il motore di LogicaDesk Pro) ---------- */
-var DEMO = {"tavole":[{"formula":"p → q","header":["p","q","p → q"],"rows":[["V","V","V"],["V","F","F"],["F","V","V"],["F","F","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"(p → q) ∧ ¬r","header":["p","q","r","p → q","¬r","(p → q) ∧ ¬r"],"rows":[["V","V","V","V","F","F"],["V","V","F","V","V","V"],["V","F","V","F","F","F"],["V","F","F","F","V","F"],["F","V","V","V","F","F"],["F","V","F","V","V","V"],["F","F","V","V","F","F"],["F","F","F","V","V","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"p ∨ ¬p","header":["p","¬p","p ∨ ¬p"],"rows":[["V","F","V"],["F","V","V"]],"verdetto":"Tautologia"}],"equivalenze":[{"a":"¬(p ∧ q)","b":"¬p ∨ ¬q","ok":true,"vars":["p","q"],"rows":[["V","V","F","F"],["V","F","V","V"],["F","V","V","V"],["F","F","V","V"]]},{"a":"p → q","b":"q → p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V"],["V","F","F","V"],["F","V","V","F"],["F","F","V","V"]]}],"conseguenze":[{"nome":"Modus ponens","premesse":["p → q","p"],"c":"q","ok":true,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","V","F"],["F","V","V","F","V"],["F","F","V","F","F"]]},{"nome":"Affermazione del conseguente","premesse":["p → q","q"],"c":"p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","F","V"],["F","V","V","V","F"],["F","F","V","F","F"]]}]};
+var DEMO = {"tavole":[{"formula":"p → q","header":["p","q","p → q"],"rows":[["V","V","V"],["V","F","F"],["F","V","V"],["F","F","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"(p → q) ∧ ¬r","header":["p","q","r","p → q","¬r","(p → q) ∧ ¬r"],"rows":[["V","V","V","V","F","F"],["V","V","F","V","V","V"],["V","F","V","F","F","F"],["V","F","F","F","V","F"],["F","V","V","V","F","F"],["F","V","F","V","V","V"],["F","F","V","V","F","F"],["F","F","F","V","V","V"]],"verdetto":"Contingente (a volte vera, a volte falsa)"},{"formula":"p ∨ ¬p","header":["p","¬p","p ∨ ¬p"],"rows":[["V","F","V"],["F","V","V"]],"verdetto":"Tautologia"}],"equivalenze":[{"a":"¬(p ∧ q)","b":"¬p ∨ ¬q","ok":true,"vars":["p","q"],"rows":[["V","V","F","F"],["V","F","V","V"],["F","V","V","V"],["F","F","V","V"]]},{"a":"p → q","b":"q → p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V"],["V","F","F","V"],["F","V","V","F"],["F","F","V","V"]]}],"conseguenze":[{"nome":"Modus ponens","premesse":["p → q","p"],"c":"q","ok":true,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","V","F"],["F","V","V","F","V"],["F","F","V","F","F"]]},{"nome":"Affermazione del conseguente","premesse":["p → q","q"],"c":"p","ok":false,"vars":["p","q"],"rows":[["V","V","V","V","V"],["V","F","F","F","V"],["F","V","V","V","F"],["F","F","V","F","F"]]}],"analisi":[{"formula":"(p → q) → p","header":["p","q","p → q","(p → q) → p"],"rows":[["V","V","V","V"],["V","F","F","V"],["F","V","V","F"],["F","F","V","F"]],"classe":"contingente","riga":3,"controesempio":"p = F, q = V"},{"formula":"(p ∧ (p → q)) → q","header":["p","q","p → q","p ∧ (p → q)","(p ∧ (p → q)) → q"],"rows":[["V","V","V","V","V"],["V","F","F","F","V"],["F","V","V","F","V"],["F","F","V","F","V"]],"classe":"tautologia","riga":null,"controesempio":null},{"formula":"(p ⊕ q) ↔ ¬(p ↔ q)","header":["p","q","p ⊕ q","p ↔ q","¬(p ↔ q)","(p ⊕ q) ↔ ¬(p ↔ q)"],"rows":[["V","V","F","V","F","V"],["V","F","V","F","V","V"],["F","V","V","F","V","V"],["F","F","F","V","F","V"]],"classe":"tautologia","riga":null,"controesempio":null}],"karnaugh":[{"formula":"(p ∧ q) ∨ (p ∧ ¬q ∧ r) ∨ (¬p ∧ q ∧ r)","risultato":"(p ∧ q) ∨ (p ∧ r) ∨ (q ∧ r)","righe":"p","colonne":"qr","er":["0","1"],"ec":["00","01","11","10"],"celle":[[[0,[]],[0,[]],[1,[2]],[0,[]]],[[0,[]],[1,[1]],[1,[0,1,2]],[1,[0]]]],"gruppi":["p ∧ q","p ∧ r","q ∧ r"]},{"formula":"(a ∧ ¬c) ∨ (¬a ∧ ¬b ∧ ¬c) ∨ (b ∧ c ∧ d) ∨ (a ∧ ¬b ∧ d)","risultato":"(a ∧ ¬c) ∨ (a ∧ d) ∨ (b ∧ c ∧ d) ∨ (¬b ∧ ¬c)","righe":"ab","colonne":"cd","er":["00","01","11","10"],"ec":["00","01","11","10"],"celle":[[[1,[3]],[1,[3]],[0,[]],[0,[]]],[[0,[]],[0,[]],[1,[2]],[0,[]]],[[1,[0]],[1,[0,1]],[1,[1,2]],[0,[]]],[[1,[0,3]],[1,[0,1,3]],[1,[1]],[0,[]]]],"gruppi":["a ∧ ¬c","a ∧ d","b ∧ c ∧ d","¬b ∧ ¬c"]}]};
 (function () {
   var chooser = document.getElementById('demo-chooser'), verdict = document.getElementById('demo-verdict'),
       table = document.getElementById('demo-table'), note = document.getElementById('demo-note'), tabs = document.querySelectorAll('.tab');
@@ -479,16 +518,57 @@ var DEMO = {"tavole":[{"formula":"p → q","header":["p","q","p → q"],"rows":[
           '<td class="mark" style="color:' + (bad ? '#6a3fd0' : '#2f4bd8') + '">' + (bad ? '✗' : crit ? '✓' : '') + '</td></tr>';
       }).join('') + '</tbody>';
       note.textContent = 'Azzurro: premesse vere e conclusione vera. Viola: il controesempio che rende il ragionamento sbagliato.';
+    },
+    analisi: function (d) {
+      var ultima = d.header.length - 1;
+      verdict.className = 'verdict ' + (d.riga ? 'no' : 'ok');
+      verdict.innerHTML = d.riga ? '✗ Non è una tautologia. Controesempio: <span class="f">' + esc(d.controesempio) + '</span> (riga ' + d.riga + ')'
+                                 : '✓ Tautologia: nessun controesempio, è vera in tutte le righe';
+      table.innerHTML = head(d.header.concat([''])) + '<tbody>' + d.rows.map(function (r, i) {
+        var bad = i + 1 === d.riga, falsa = r[ultima] === 'F';
+        return '<tr' + (bad ? ' class="bad"' : falsa ? ' class="falsa"' : '') + '>' + r.map(cell).join('') +
+          '<td class="mark" style="color:#6a3fd0">' + (bad ? '✗ controesempio' : '') + '</td></tr>';
+      }).join('') + '</tbody>';
+      note.textContent = d.riga ? 'In viola la riga del controesempio: con questi valori la formula è falsa.'
+                                : 'Nessuna riga la rende falsa: LogicaDesk Pro lo dice subito, senza contare a mano.';
+    },
+    karnaugh: function (d) {
+      var colori = [['#dbe7ff', '#3a6ee8'], ['#ebe1ff', '#7a4fe0'], ['#d4f4f8', '#1aa3b8'], ['#ffe3f1', '#d0559a']];
+      function sfondo(gruppi) {
+        if (!gruppi.length) return '';
+        if (gruppi.length === 1) return ' style="background:' + colori[gruppi[0]][0] + '"';
+        var parte = 100 / gruppi.length;
+        return ' style="background:linear-gradient(135deg,' + gruppi.map(function (g, i) {
+          return colori[g][0] + ' ' + (i * parte) + '% ' + ((i + 1) * parte) + '%';
+        }).join(',') + ')"';
+      }
+      verdict.className = 'verdict ok';
+      verdict.innerHTML = '✓ Forma minima: <span class="f">' + esc(d.risultato) + '</span>';
+      table.className = 'km';
+      table.innerHTML = '<thead><tr><th>' + esc(d.righe) + ' \\ ' + esc(d.colonne) + '</th>' + d.ec.map(function (c) { return '<th>' + c + '</th>'; }).join('') +
+        '</tr></thead><tbody>' + d.celle.map(function (riga, i) {
+          return '<tr><th>' + d.er[i] + '</th>' + riga.map(function (c) {
+            return '<td class="' + (c[0] ? 'uno' : '') + '"' + sfondo(c[1]) + '>' + c[0] + '</td>';
+          }).join('') + '</tr>';
+        }).join('') + '</tbody>';
+      table.insertAdjacentHTML('afterend', '<div class="km-legend">' + d.gruppi.map(function (g, i) {
+        return '<span style="background:' + colori[i][0] + ';border-color:' + colori[i][1] + '">' + esc(g) + '</span>';
+      }).join('') + '</div>');
+      note.textContent = 'Ogni colore è un gruppo di celle con 1 vicine: ogni gruppo diventa un termine della forma minima. Le righe e le colonne seguono il codice di Gray (00, 01, 11, 10).';
     }
   };
   function label(kind, d) {
     if (kind === 'tavole') return d.formula;
     if (kind === 'equivalenze') return d.a + '  vs  ' + d.b;
+    if (kind === 'analisi' || kind === 'karnaugh') return d.formula.length > 34 ? d.formula.slice(0, 32) + '…' : d.formula;
     return d.nome;
   }
   function show(kind, index) {
     tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.tab === kind)); });
     chooser.innerHTML = '';
+    table.className = 'dt';
+    var legenda = table.parentNode.querySelector('.km-legend');
+    if (legenda) legenda.remove();
     DEMO[kind].forEach(function (d, i) {
       var b = document.createElement('button');
       b.type = 'button'; b.textContent = label(kind, d); b.setAttribute('aria-pressed', String(i === index));
